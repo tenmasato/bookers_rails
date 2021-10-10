@@ -1,12 +1,14 @@
 <h1>Editing Book</h1>
-<%=form_with model:@book,url:"/books/#{@book.id}",locla:true do |f| %>
-<if book.errors.any?>
-    <h2><%=book.errors.count%>errors prohibited this book from being saved:</h2>
+<%=form_with model:@book,url:"/books/#{@book.id}",local:true do |f| %>
+<%if @book.errors.any?%>
+<div id = "error_explanation">
+    <h2><%=@book.errors.count%>errors prohibited this book from being saved:</h2>
     <ul>
-        <%=member.errors.full_messages.each do |message| %>
-        <li><%=message%></li>
+        <%=@book.errors.full_messages.each do |message| %>
+      <li><%=message%></li>
         <%end%>
     </ul>
+    </div>
     <%end%>
 
 <div class = "field">
